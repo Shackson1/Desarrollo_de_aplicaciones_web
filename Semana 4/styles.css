@@ -1,0 +1,131 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.header-principal {
+    background-color: #4caf50;
+    color: white;
+    padding: 50px 20px;
+    margin-bottom: 30px;
+}
+
+.header-principal h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+
+.btn-primary {
+    background-color: #ff5733;
+    border-color: #ff5733;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #c70039;
+    border-color: #c70039;
+    transform: scale(1.1);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.card {
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+
+.form-contacto {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    border-color: #ff5733;
+    box-shadow: 0 0 5px rgba(255, 87, 51, 0.5);
+}
+
+
+.boton-enviar {
+    width: 100%;
+    font-size: 18px;
+}
+
+
+.footer {
+    background-color: #f8f9fa;
+    border-top: 2px solid #ddd;
+}
+
+.footer a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    color: #ff5733;
+    text-decoration: underline;
+}
+
+
+@media (max-width: 600px) {
+    .header-principal {
+        background-color: #2196f3;
+        padding: 30px 15px;
+    }
+    
+    .header-principal h1 {
+        font-size: 1.8em;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+    }
+    
+    .btn-primary {
+        font-size: 14px;
+    }
+}
+
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: aparecer 0.5s ease-in;
+}
