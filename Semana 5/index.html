@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Interactiva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Mi Galería de Imágenes</h1>
+        
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <input type="url" id="urlImagen" class="form-control" placeholder="Ingresa la URL de la imagen">
+            </div>
+            <div class="col-md-4">
+                <button id="btnAgregar" class="btn btn-primary w-100">Agregar Imagen</button>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <button id="btnEliminar" class="btn btn-danger">Eliminar Imagen Seleccionada</button>
+        </div>
+
+        <div id="galeria" class="galeria"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
