@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehículos Ecuador - Catálogo Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"><strong>🚗 Vehículos Ecuador</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuNavegacion">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#carrusel">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        
+        <section id="carrusel" class="mb-5">
+            <h2 class="text-center mb-4">Descubre Nuestros Vehículos</h2>
+            <div id="carruselVehiculos" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carruselVehiculos" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#carruselVehiculos" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#carruselVehiculos" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#carruselVehiculos" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#carruselVehiculos" data-bs-slide-to="4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-vehiculo="kia-soluto">
+                        
+                        <img src="assets/images/imagen1.jpg" class="d-block w-100 imagen-carrusel" alt="Kia Soluto">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Kia Soluto</h5>
+                            <p>El sedán más vendido de Ecuador</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-vehiculo="chevrolet-dmax">
+                       
+                        <img src="assets/images/imagen2.jpg" class="d-block w-100 imagen-carrusel" alt="Chevrolet D-Max">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Chevrolet D-Max</h5>
+                            <p>Potencia y resistencia para todo terreno</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-vehiculo="kia-sonet">
+                            
+                        <img src="assets/images/imagen3.jpg" class="d-block w-100 imagen-carrusel" alt="Kia Sonet">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Kia Sonet</h5>
+                            <p>SUV compacto con tecnología avanzada</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-vehiculo="hyundai-tucson">
+                        
+                        <img src="assets/images/imagen4.jpg" class="d-block w-100 imagen-carrusel" alt="Hyundai Tucson">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Hyundai Tucson</h5>
+                            <p>Elegancia y confort en cada viaje</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-vehiculo="chevrolet-joy">
+                       
+                        <img src="assets/images/imagen5.jpg" class="d-block w-100 imagen-carrusel" alt="Chevrolet Joy Black">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Chevrolet Joy Black</h5>
+                            <p>Accesible y confiable para la ciudad</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carruselVehiculos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carruselVehiculos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </section>
+
+        <section id="catalogo" class="mb-5">
+            <div id="contenedorTabla" class="tabla-oculta">
+                <h3 class="text-center mb-4">Catálogo de Vehículos Disponibles en Ecuador</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover tabla-vehiculos">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Marca y Modelo</th>
+                                <th>Año</th>
+                                <th>Condición</th>
+                                <th>Kilometraje</th>
+                                <th>Precio (USD)</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTabla">
+                            <tr>
+                                <td>Kia Soluto</td>
+                                <td>2024</td>
+                                <td><span class="badge bg-success">Nuevo</span></td>
+                                <td>0 km</td>
+                                <td>$16,299</td>
+                                <td>Sedán</td>
+                            </tr>
+                            <tr>
+                                <td>Chevrolet D-Max 4x4</td>
+                                <td>2023</td>
+                                <td><span class="badge bg-warning text-dark">Usado</span></td>
+                                <td>25,400 km</td>
+                                <td>$35,500</td>
+                                <td>Camioneta</td>
+                            </tr>
+                            <tr>
+                                <td>Kia Sonet LX</td>
+                                <td>2025</td>
+                                <td><span class="badge bg-success">Nuevo</span></td>
+                                <td>0 km</td>
+                                <td>$21,990</td>
+                                <td>SUV</td>
+                            </tr>
+                            <tr>
+                                <td>Hyundai Tucson</td>
+                                <td>2024</td>
+                                <td><span class="badge bg-success">Nuevo</span></td>
+                                <td>0 km</td>
+                                <td>$28,990</td>
+                                <td>SUV</td>
+                            </tr>
+                            <tr>
+                                <td>Chevrolet Joy Black</td>
+                                <td>2024</td>
+                                <td><span class="badge bg-success">Nuevo</span></td>
+                                <td>0 km</td>
+                                <td>$16,299</td>
+                                <td>Sedán</td>
+                            </tr>
+                                        
+                         
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="mb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">Formulario de Contacto</h3>
+                            <p class="text-center text-muted mb-4">¿Interesado en algún vehículo? Contáctanos y te responderemos pronto</p>
+                            
+                            <form id="formularioContacto" novalidate>
+                                <div class="mb-3">
+                                    <label for="campoNombre" class="form-label">Nombre Completo *</label>
+                                    <input type="text" class="form-control" id="campoNombre" required>
+                                    <div class="invalid-feedback">Por favor, ingresa tu nombre completo (mínimo 3 caracteres).</div>
+                                    <div class="valid-feedback">¡Perfecto!</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="campoCorreo" class="form-label">Correo Electrónico *</label>
+                                    <input type="email" class="form-control" id="campoCorreo" required>
+                                    <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                                    <div class="valid-feedback">¡Correo válido!</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="campoTelefono" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="campoTelefono" placeholder="Ejemplo: 0987654321">
+                                    <div class="invalid-feedback">El teléfono debe tener 10 dígitos.</div>
+                                    <div class="valid-feedback">¡Teléfono válido!</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="campoMensaje" class="form-label">Mensaje *</label>
+                                    <textarea class="form-control" id="campoMensaje" rows="4" required></textarea>
+                                    <div class="invalid-feedback">Por favor, escribe tu mensaje (mínimo 10 caracteres).</div>
+                                    <div class="valid-feedback">¡Mensaje recibido!</div>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Vehículos Ecuador</h5>
+                    <p>Tu mejor opción para encontrar el vehículo ideal</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Síguenos</h5>
+                    <a href="#" class="text-white me-3">Facebook</a>
+                    <a href="#" class="text-white me-3">Instagram</a>
+                    <a href="#" class="text-white">WhatsApp</a>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <small>&copy; 2026 Vehículos Ecuador. Todos los derechos reservados.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scritp.js"></script>
+</body>
+</html>

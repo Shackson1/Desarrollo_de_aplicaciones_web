@@ -1,0 +1,17 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.imagen-carrusel {
+    height: 500px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+    .imagen-carrusel {
+        height: 300px;
+    }
+}
