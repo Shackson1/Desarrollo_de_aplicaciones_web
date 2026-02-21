@@ -16,7 +16,7 @@ def gestion_productos():
 
 @app.route('/inventario')
 def inventario():
-    return render_template('Inventario.html')
+    return render_template('inventario.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
