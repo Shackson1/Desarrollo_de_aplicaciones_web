@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %} {{ titulo }} {% endblock %}
+
+{% block content %}
+    <div class="contenedor-formulario">
+        
+        <h2>{{ titulo }}</h2>
+        
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group">
+                {{ form.descripcion.label }}
+                {{ form.descripcion() }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.fecha_hora.label }}
+                {{ form.fecha_hora() }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.total.label }}
+                {{ form.total() }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.metodo_pago.label }}
+                {{ form.metodo_pago() }}
+            </div>
+            
+            <div class="ticket-actions">
+                
+                <button type="submit" class="btn-icono-form btn-guardar-check" title="Guardar Función">
+                    <i class="bi bi-check-circle"></i>
+                </button>
+
+                <a href="{{ url_for('funciones') }}" class="btn-icono-form btn-cancelar-x" title="Cancelar">
+                    <i class="bi bi-x-circle"></i>
+                </a>
+
+            </div>
+        </form>
+        
+    </div>
+{% endblock %}

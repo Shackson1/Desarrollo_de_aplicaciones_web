@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Iniciar sesión - Cimazon{% endblock %}
+
+{% block content %}
+<div class="main-login-container">
+    
+    <section class="contenedor-login-card">
+        
+        <div class="login-header">
+            <i class="bi bi-shield-lock"></i>
+            <h2>Iniciar sesión</h2>
+        </div>
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(class="form-control", placeholder="ejemplo@correo.com") }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(class="form-control", placeholder="••••••••") }}
+            </div>
+            
+            <div class="form-group" style="margin-top: 25px;">
+                {{ form.submit(class="btn-cimazon", style="width: 100%;") }}
+            </div>
+        </form>
+
+        <div class="login-footer">
+            <p>¿No tienes cuenta? <a href="{{ url_for('registro') }}">Regístrate aquí</a></p>
+        </div>
+        
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Buscar Productos{% endblock %}
+
+{% block content %}
+<h2>Buscar Productos por Nombre</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.nombre.label }}<br>
+        {{ form.nombre() }}
+        {% for error in form.nombre.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <p>{{ form.submit() }}</p>
+</form>
+
+<hr>
+
+{% if productos is not none %}
+    <h3>Resultados de la búsqueda:</h3>
+    {% if productos %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in productos %}
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.nombre }}</td>
+                    <td>{{ p.cantidad }}</td>
+                    <td>${{ p.precio }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron coincidencias.</p>
+    {% endif %}
+{% endif %}
+
+<p><a href="{{ url_for('inventario_index') }}">Regresar al menú</a></p>
+{% endblock %}

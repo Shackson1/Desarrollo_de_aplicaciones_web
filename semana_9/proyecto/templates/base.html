@@ -15,9 +15,21 @@
     <a href="/about">Acerca de</a>
     <a href="/gestion_productos">Gestión de Productos</a>
     <a href="/inventario">Inventario</a>
+    <a href="/datos">Datos (Semana 12)</a>
+    <a href="/contacto">Contacto</a>
 </nav>
 
 <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
     {% block content %}{% endblock %}
 </main>
 

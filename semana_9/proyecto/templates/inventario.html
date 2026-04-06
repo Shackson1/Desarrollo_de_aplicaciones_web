@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Inventario{% endblock %}
+{% block title %}Inventario - Gestión{% endblock %}
 
 {% block content %}
-<h2>Inventario</h2>
-<p>Contenido del inventario.</p>
+<h2>Gestión Avanzada de Inventario</h2>
+<p>Selecciona una operación:</p>
+<ul>
+    <li><a href="{{ url_for('inventario_añadir') }}">Añadir Nuevo Producto</a></li>
+    <li><a href="{{ url_for('inventario_mostrar') }}">Mostrar Todos los Productos</a></li>
+    <li><a href="{{ url_for('inventario_buscar') }}">Buscar Producto por Nombre</a></li>
+    <li><a href="{{ url_for('inventario_actualizar') }}">Actualizar Producto (Cantidad/Precio)</a></li>
+    <li><a href="{{ url_for('inventario_eliminar') }}">Eliminar Producto</a></li>
+</ul>
 {% endblock %}

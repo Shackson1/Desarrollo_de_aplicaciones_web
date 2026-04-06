@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ titulo if titulo else "Formulario de Producto" }}</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.nombre.label }}<br>
+        {{ form.nombre(size=32) }}
+        {% for error in form.nombre.errors %}
+            <div style="color: red;">[{{ error }}]</div>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.cantidad.label }}<br>
+        {{ form.cantidad() }}
+        {% for error in form.cantidad.errors %}
+            <div style="color: red;">[{{ error }}]</div>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.precio.label }}<br>
+        {{ form.precio() }}
+        {% for error in form.precio.errors %}
+            <div style="color: red;">[{{ error }}]</div>
+        {% endfor %}
+    </div>
+    <p>{{ form.submit() }}</p>
+</form>
+<hr>
+<p><a href="{{ url_for('inventario_index') }}">Regresar al menú de inventario</a></p>
+{% endblock %}

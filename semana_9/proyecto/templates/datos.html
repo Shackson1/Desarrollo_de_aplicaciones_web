@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}Datos – Persistencia Local{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Gestión de Persistencia Local (Semana 12)</h2>
+    <p>Visualización de datos almacenados en diferentes formatos y base de datos ORM.</p>
+
+    <div class="actions" style="margin-bottom: 2rem;">
+        <a href="{{ url_for('datos_exportar') }}" class="btn btn-primary">Exportar inventario activo a archivos (TXT, CSV, JSON)</a>
+    </div>
+
+    <!-- Sección TXT -->
+    <section>
+        <h3>1. Persistencia en TXT</h3>
+        <p>Formato: <code>ID|Nombre|Cantidad|Precio</code></p>
+        <div class="data-block" style="background: #f4f4f4; padding: 1rem; border-radius: 5px;">
+            {% if txt_data %}
+                <pre>{% for fila in txt_data %}{{ fila.id }}|{{ fila.nombre }}|{{ fila.cantidad }}|{{ fila.precio }}{{ "\n" }}{% endfor %}</pre>
+            {% else %}
+                <p>No hay datos en el archivo TXT.</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('ver_txt') }}" target="_blank">Ver TXT puro</a>
+    </section>
+
+    <hr>
+
+    <!-- Sección CSV -->
+    <section>
+        <h3>2. Persistencia en CSV</h3>
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead style="background: #eee;">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fila in csv_data %}
+                <tr>
+                    <td>{{ fila.id }}</td>
+                    <td>{{ fila.nombre }}</td>
+                    <td>{{ fila.cantidad }}</td>
+                    <td>{{ fila.precio }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">No hay datos en el archivo CSV.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div style="margin-top: 0.5rem;">
+            <a href="{{ url_for('ver_csv') }}">Descargar CSV</a>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Sección JSON -->
+    <section>
+        <h3>3. Persistencia en JSON</h3>
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead style="background: #eee;">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fila in json_data %}
+                <tr>
+                    <td>{{ fila.id }}</td>
+                    <td>{{ fila.nombre }}</td>
+                    <td>{{ fila.cantidad }}</td>
+                    <td>{{ fila.precio | float }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">No hay datos en el archivo JSON.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div style="margin-top: 0.5rem;">
+            <a href="{{ url_for('ver_json') }}" target="_blank">Ver JSON raw (API)</a>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Sección SQLAlchemy ORM -->
+    <section>
+        <h3>4. Datos vía SQLAlchemy ORM</h3>
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead style="background: #eef;">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in orm_data %}
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.nombre }}</td>
+                    <td>{{ p.cantidad }}</td>
+                    <td>${{ p.precio }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">No hay datos registrados vía ORM.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <hr>
+
+    <!-- Formulario de Demostración ORM -->
+    <section style="background: #fff9f0; padding: 1.5rem; border-radius: 8px; border: 1px solid #ffe8cc; margin-top: 2rem;">
+        <h3>Añadir Producto (Vía ORM + Sincronización)</h3>
+        <form action="{{ url_for('datos_guardar') }}" method="POST">
+            <div style="margin-bottom: 1rem;">
+                <label>Nombre:</label><br>
+                <input type="text" name="nombre" required style="width: 100%;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label>Cantidad:</label><br>
+                <input type="number" name="cantidad" required style="width: 100%;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label>Precio:</label><br>
+                <input type="number" step="0.01" name="precio" required style="width: 100%;">
+            </div>
+            <button type="submit" style="padding: 0.5rem 1rem; cursor: pointer;">Guardar en ORM y Archivos</button>
+        </form>
+    </section>
+</div>
+{% endblock %}

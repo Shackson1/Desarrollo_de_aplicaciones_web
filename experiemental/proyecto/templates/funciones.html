@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %} Funciones {% endblock %}
+
+{% block content %}
+    <section class="card">
+        <div class="card-header">
+            <h2>Funciones</h2>
+            <a href="{{ url_for('funciones_nuevo') }}" class="btn-new-icon", style="width: auto;">
+                <i class="bi bi-plus-circle"></i>
+            </a>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripción</th>
+                        <th>Fecha y hora</th>
+                        <th>Total</th>
+                        <th>Método de pago</th>
+                        <th style="text-align: center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if funciones|length == 0 %}
+                    <tr>
+                        <td colspan="6" style="text-align: center;">No hay funciones registradas.</td>
+                    </tr>
+                    {% else %}
+                        {% for funcion in funciones %}
+                        <tr>
+                            <td>{{ funcion.id_funcion }}</td>
+                            <td>{{ funcion.descripcion }}</td>
+                            <td>{{ funcion.fecha_hora }}</td>
+                            <td>${{ '%.2f' | format(funcion.total) }}</td>
+                            <td>{{ funcion.metodo_pago }}</td>
+                            <td style="text-align: center; white-space: nowrap;">
+                                <a href="{{ url_for('funciones_editar', id=funcion.id_funcion) }}" class="btn-editar">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                
+                                <a href="{{ url_for('funciones_eliminar', id=funcion.id_funcion) }}" 
+                                   class="btn-eliminar" 
+                                   onclick="return confirm('¿Estás seguro de eliminar esta función?')">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}

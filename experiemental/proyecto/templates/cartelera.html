@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %} Página de la cartelera {% endblock %}
+
+{% block content %}
+    <section class="card">
+        <div class="card-header">
+            <h2>Lista de funciones</h2>
+            {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+            <a href="{{url_for('cartelera_nuevo')}}" class="btn-new-icon" style="width: auto;">
+                <i class="bi bi-plus-circle"></i>
+            </a>
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th style="text-align: center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if productos|length == 0 %}
+                    <tr>
+                        <td colspan="6" style="text-align: center;">No hay funciones disponibles</td>
+                    </tr>
+                    {% else %}
+                        {% for producto in productos %}
+                        <tr>
+                            <td>{{ producto.id }}</td>
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.descripcion }}</td>
+                            <td>${{ '%.2f' | format(producto.precio) }}</td>
+                            <td>{{ producto.cantidad }}</td>
+                            <td style="text-align: center; white-space: nowrap;">
+                                {% if current_user.is_authenticated and current_user.rol == 'admin' %}
+                                <a href="{{url_for('producto_editar', id=producto.id) }}" 
+                                   class="btn-editar" 
+                                   title="Editar película">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                
+                                <a href="{{url_for('producto_eliminar', id=producto.id)}}" 
+                                   class="btn-eliminar" 
+                                   title="Eliminar función"
+                                   onclick="return confirm('¿Estás seguro de que deseas eliminar esta función de la cartelera?')">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                                {% endif %}
+                                <a href="{{url_for('boleteria_nuevo', pelicula_id=producto.id)}}"
+                                   class="btn-login"
+                                   title="Comprar boleto"
+                                   style="padding: 5px 10px; margin-left: 5px;">
+                                    <i class="bi bi-ticket-perforated"></i> Comprar
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
